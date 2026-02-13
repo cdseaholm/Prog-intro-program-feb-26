@@ -9,7 +9,7 @@ public class Account
 
     public void Deposit(decimal amountToDeposit)
     {
-  
+
         _currentBalance += amountToDeposit;
     }
 
@@ -22,19 +22,18 @@ public class Account
     // Primitive Obsession 
     public void Withdraw(decimal amountToWithdraw)
     {
-        if (IsAllowedTransactionAmount(amountToWithdraw))
+
+        if (amountToWithdraw > _currentBalance)
         {
-            if (amountToWithdraw <= _currentBalance)
-            {
-
-                _currentBalance -= amountToWithdraw;
-            }
-            
+            // exit with an exception - abnormal end.
+            throw new OverdraftNotAllowedException();
         }
+        _currentBalance -= amountToWithdraw;
+
+
     }
 
-    private  bool IsAllowedTransactionAmount(decimal amountToWithdraw)
-    {
-        return amountToWithdraw > 0;
-    }
+
 }
+
+public class OverdraftNotAllowedException : ArgumentOutOfRangeException { }
