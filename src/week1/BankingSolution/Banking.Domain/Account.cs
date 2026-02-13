@@ -3,14 +3,25 @@
 
 namespace Banking.Domain;
 
-public class Account
+public class Account(ICalculateBonusesForAccounts _bonusCalculator)
 {
     private decimal _currentBalance = 5000M;
 
-    public void Deposit(decimal amountToDeposit)
-    {
+    //private ICalculateBonusesForAccounts _calculateBonusesForAccounts;
 
-        _currentBalance += amountToDeposit;
+    //public Account(ICalculateBonusesForAccounts calc)
+    //{
+    //    _calculateBonusesForAccounts = calc;
+    //}
+
+    public void Deposit(TransactionAmount amountToDeposit)
+    {
+        // if the amountToDeposit is 0 or less, throw an exception - abnormal end.
+        //var bonusCalculator = new StandardBonusCalculator(); // this is a real, concrete thing. 
+        // "new is glue"
+        // If, and only if the bonus calculator throws an exception - send a notifcation to some other service,
+        // add zero to the balance - and the notification 
+        _currentBalance += amountToDeposit + _bonusCalculator.CalculateBonusForDeposit(_currentBalance,amountToDeposit);
     }
 
     public decimal GetBalance()
@@ -20,10 +31,11 @@ public class Account
     }
 
     // Primitive Obsession 
-    public void Withdraw(decimal amountToWithdraw)
+    // You can call this with any decimal value and it will work. 
+    public void Withdraw(TransactionAmount amountToWithdraw)
     {
 
-        if (amountToWithdraw > _currentBalance)
+        if (WouldCauseOverdraft(amountToWithdraw))
         {
             // exit with an exception - abnormal end.
             throw new OverdraftNotAllowedException();
@@ -33,6 +45,10 @@ public class Account
 
     }
 
+    private bool WouldCauseOverdraft(decimal amountToWithdraw)
+    {
+        return amountToWithdraw > _currentBalance;
+    }
 
 }
 
