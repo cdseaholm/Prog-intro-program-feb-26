@@ -1,12 +1,3 @@
-# Visual Studio Code
-
-## Jeff repo
-
-https://github.com/HypertheoryTraining/angular-starter-2026/blob/main/
-
-## Jeff settings
-
-```
 {
   "files.associations": {
     "*.css": "tailwindcss"
@@ -63,30 +54,3 @@ https://github.com/HypertheoryTraining/angular-starter-2026/blob/main/
   "diffEditor.ignoreTrimWhitespace": false,
   "l13Diff.ignoreByteOrderMark": false
 }
-```
-
-## Jeff Extensions
-
-```
-{
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
-  "recommendations": [
-    "angular.ng-template",
-    "l13rary.l13-diff",
-    "formulahendry.auto-rename-tag",
-    "dbaeumer.vscode-eslint",
-    "pomdtr.excalidraw-editor",
-    "afzalsayed96.icones",
-    "mskelton.npm-outdated",
-    "chrisdias.vscode-opennewinstance",
-    "esbenp.prettier-vscode",
-    "humao.rest-client",
-    "wenfangdu.snippet-generator",
-    "bradlc.vscode-tailwindcss",
-    "mattpocock.ts-error-translator",
-    "orta.vscode-twoslash-queries",
-    "vitest.explorer"
-  ]
-}
-```
-
