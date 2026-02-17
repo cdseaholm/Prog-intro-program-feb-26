@@ -17,12 +17,12 @@ public class Calculator(ILogger _logger, INotifyTheHelpDesk _helpDesk)
 {
     public int Add(string numbers)
     {
-        
+
 
         var result = numbers == "" ? 0 : numbers // "1,2,3,4"
-                .Split(',', '\n') // ["1", "2", "3", "4"]
-                .Select(int.Parse) // [1, 2, 3, 4]
-                .Sum(); // 10
+            .Split(',', '\n') // ["1", "2", "3", "4"]
+            .Select(int.Parse) // [1, 2, 3, 4]
+            .Sum(); // 10
 
         // Do something here
         // this is a "non-functional" or "technical" requirement.
@@ -40,7 +40,7 @@ public class Calculator(ILogger _logger, INotifyTheHelpDesk _helpDesk)
         catch (Exception)
         {
             // The help desk is notified.
-            
+          
           
             // gulp!
         _helpDesk.Notify("Wan't able to log: " + result.ToString());
@@ -53,7 +53,7 @@ public class Calculator(ILogger _logger, INotifyTheHelpDesk _helpDesk)
 
 
 // Test Double
-// Dummy - not really part of the test, just need something so we don't get a NRE (don't do null like React/TypeScript)
+// Dummy - not really part of the test, just need something so we don't get a NRE
 // Stub - a thing that has canned responses to questions. Simulating faults.
 // Mock - Record their interactions. 
 // Fake - We will do this in our API. It's not our code, it's a "stand in" for something
