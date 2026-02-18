@@ -1,14 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-profile',
+  selector: 'app-profile-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
-  template: `
-    <div class="container mx-auto pt-4">
-      <h1 class="text-2xl font-bold mb-4">Profile Page</h1>
-      <p>Welcome to your profile page! Here you can view and edit your personal information.</p>
-    </div>
-  `,
-  styles: [],
+  template: ` <p>This is the profile page</p> `,
+  styles: ``,
 })
 export class Profile {}
